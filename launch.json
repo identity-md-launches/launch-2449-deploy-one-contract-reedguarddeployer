@@ -1,0 +1,14 @@
+{
+  "kind": "evm_contracts",
+  "contracts": [
+    {
+      "contract": "ReedGuardDeployer",
+      "constructorArgs": [
+        "0x8366a39CC670B4001A1121B8F6A443A643e40951",
+        "$owner",
+        "0x5Bff2a2FEcD1d6152676813b21346238733bEAB1"
+      ]
+    }
+  ],
+  "notes": "Deploy ReedGuardDeployer on Robinhood Chain. Its constructor starts at salt 0, increments until the CREATE2 address matches ReedGuard's hook permissions, and creates ReedGuard in the same transaction, passing the PoolManager, owner and fee recipient unchanged. Read hook() for the hook address. ReedGuard permits anyone to initialize native-ETH currency0 pools, charges a 1.0% ETH-side swap fee to the fixed recipient, and mints claims when direct payment is unavailable. Anyone may redeem a pool's claims through claimFees(PoolId). Only the immutable owner may pause(PoolId) and unpause(PoolId); liquidity removal remains available. Each pool has a separate 30-second swap cooldown keyed by tx.origin, exposed through nextSwapAt(PoolId,address)."
+}
